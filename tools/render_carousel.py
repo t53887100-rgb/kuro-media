@@ -1,4 +1,12 @@
-import json, sys, asyncio
+import json, sys, asyncio, base64, os, re
+KURO_DIR=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','assets','kuro')
+
+def embed_kuro(html):
+    # {{kuro:NAME}} -> data URI of assets/kuro/NAME.png
+    def rep(m):
+        data=open(os.path.join(KURO_DIR,m.group(1)+'.png'),'rb').read()
+        return 'data:image/png;base64,'+base64.b64encode(data).decode()
+    return re.sub(r'\{\{kuro:([a-z_]+)\}\}', rep, html)
 from playwright.async_api import async_playwright
 
 CSS = """
@@ -16,9 +24,10 @@ p{font-size:44px;line-height:1.75;line-break:strict;color:#d9d4cb;font-weight:50
 .em{color:#f2c46d}
 .box{margin-top:auto;border:2px solid rgba(214,160,74,.55);border-radius:18px;padding:34px 40px;
  font-size:38px;line-height:1.6;color:#f2efe9;background:rgba(214,160,74,.07)}
-.foot{position:absolute;left:96px;right:96px;bottom:56px;display:flex;justify-content:space-between;
+.foot{position:absolute;z-index:2;left:96px;right:96px;bottom:56px;display:flex;justify-content:space-between;
  font-size:26px;color:#8d877c;letter-spacing:.05em}
 .cta{font-size:64px;font-weight:900;line-height:1.35;margin-bottom:40px}
+.kuro{position:absolute;pointer-events:none;filter:drop-shadow(0 0 40px rgba(214,160,74,.18))}
 .line{display:inline-block;background:#06c755;color:#fff;font-weight:900;font-size:50px;
  padding:26px 44px;border-radius:999px;margin-top:20px}
 """
@@ -34,7 +43,8 @@ async def main(spec_path, outdir):
         b = await p.chromium.launch()
         pg = await b.new_page(viewport={'width':1080,'height':1350})
         for i, s in enumerate(slides, 1):
-            await pg.set_content(page(s, i, len(slides)))
+            await pg.set_content(embed_kuro(page(s, i, len(slides))))
+            await pg.wait_for_load_state('load')
             await pg.wait_for_timeout(200)
             await pg.screenshot(path=f"{outdir}/slide{i:02d}.jpg", type='jpeg', quality=92)
         await b.close()
