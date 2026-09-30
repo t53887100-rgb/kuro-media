@@ -1,0 +1,9 @@
+{
+  "scenes": [
+    {"dur": 3.0, "kuro": "surprised", "lines": ["口コミ返信は", "長さより“一箇所”"], "bubble": "長文いらないの？"},
+    {"dur": 4.0, "kuro": "phone_think", "kicker": "01", "lines": ["書かれた内容に触れる"], "sub": "褒められた一品に、お礼を一文", "bubble": "そこを拾う"},
+    {"dur": 4.0, "kuro": "checklist", "kicker": "02", "lines": ["お礼→具体→結び"], "sub": "来店のお礼／内容への一言／また来やすい結び", "bubble": "この3つだけ"},
+    {"dur": 4.0, "kuro": "glass_wipe", "kicker": "03", "lines": ["厳しい口コミは翌日に"], "sub": "事実とお礼だけ、落ち着いて書く", "bubble": "熱いうちは下書き"},
+    {"dur": 4.5, "kuro": "offer_hand", "lines": ["どこから直すか", "無料チェックで"], "sub": "プロフィールのリンク→LINEで「集客」", "cta": true, "bubble": "一緒に見ようか"}
+  ]
+}
