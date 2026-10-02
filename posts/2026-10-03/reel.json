@@ -1,0 +1,10 @@
+{
+ "title": ["初めての人が来る前に", "消しておく3つの不安"],
+ "scenes": [
+  {"type": "hook", "dur": 2.6, "big": ["初めての人は", "聞けずにあきらめる"], "em": 1, "kuro": "surprised", "bubble": "DMしないの？"},
+  {"type": "item", "dur": 4.0, "n": "1", "head": "一人で入れる？", "from_label": "心の声", "from": "ひとり…", "to": "カウンター席あり・お一人様歓迎", "note": "プロフィールに一行", "kuro": "point", "bubble": "ここ大事"},
+  {"type": "item", "dur": 4.0, "n": "2", "head": "いくらかかる？", "from_label": "心の声", "from": "いくら…", "to": "チャージ〇円・1杯〇円〜", "note": "目安だけでも書く", "kuro": "phone_think", "bubble": "ざっくりでいい"},
+  {"type": "item", "dur": 4.0, "n": "3", "head": "どこから入る？", "from_label": "心の声", "from": "いりぐち…", "to": "〇〇ビル2階・看板が目印", "note": "入口の写真を1枚", "kuro": "checklist", "bubble": "地図にも"},
+  {"type": "end", "dur": 3.6, "big": ["どこで迷わせてるか", "無料で診断"], "sub": "プロフィールのリンク→LINEで「集客」", "kuro": "offer_hand", "bubble": "一緒に見ようか"}
+ ]
+}
